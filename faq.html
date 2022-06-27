@@ -11,11 +11,15 @@
     
       <meta name="author" content="Ross Baker"/>
     
+      <meta name="author" content="Arman Bilge"/>
+    
       <meta name="author" content="P. Oscar Boykin"/>
     
       <meta name="author" content="Travis Brown"/>
     
       <meta name="author" content="Adelbert Chang"/>
+    
+      <meta name="author" content="Daniel Esik"/>
     
       <meta name="author" content="Peter Neyens"/>
     
@@ -32,6 +36,8 @@
       <meta name="author" content="Daniel Spiewak"/>
     
       <meta name="author" content="Frank Thomas"/>
+    
+      <meta name="author" content="Sergey Torgashov"/>
     
       <meta name="author" content="Julien Truffaut"/>
     
@@ -71,7 +77,7 @@
 
       <a class="image-link" href="https://typelevel.org"><img src="https://typelevel.org/img/logo.svg"></a>
 
-      <span class="row links"><a class="icon-link svg-link" href="https://typelevel.org/cats/api/"><span title="API"><svg class="svg-icon" width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+      <span class="row links"><a class="icon-link svg-link" href="https://www.javadoc.io/doc/org.typelevel/cats-docs_2.12/2.0.0/"><span title="API"><svg class="svg-icon" width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
   <g class="svg-shape">
     <path d="M75,47.5c13.246,0 24,10.754 24,24c0,13.246 -10.754,24 -24,24c-13.246,0 -24,-10.754 -24,-24c0,-13.246 10.754,-24 24,-24Zm-50,-0c13.246,-0 24,10.754 24,24c0,13.246 -10.754,24 -24,24c-13.246,-0 -24,-10.754 -24,-24c0,-13.246 10.754,-24 24,-24Zm2.705,16.735l7.239,0l0.622,-4.904l-21.833,0l-0,4.904l7.589,0l0,22.067l6.383,0l-0,-22.067Zm58.076,7.265c-0,-8.757 -3.698,-14.166 -10.781,-14.166c-7.083,-0 -10.781,5.604 -10.781,14.166c0,8.757 3.698,14.166 10.781,14.166c7.083,0 10.781,-5.604 10.781,-14.166Zm-6.539,0c0,6.538 -1.128,9.496 -4.242,9.496c-2.997,0 -4.242,-2.88 -4.242,-9.496c-0,-6.616 1.206,-9.496 4.242,-9.496c3.036,-0 4.242,2.88 4.242,9.496Zm-29.242,-67c13.246,0 24,10.754 24,24c0,13.246 -10.754,24 -24,24c-13.246,0 -24,-10.754 -24,-24c0,-13.246 10.754,-24 24,-24Zm0.512,9.834c-7.122,-0 -12.609,5.098 -12.609,14.127c-0,9.263 5.215,14.205 12.532,14.205c4.164,0 7.083,-1.634 9.068,-3.658l-2.88,-3.697c-1.518,1.206 -3.153,2.413 -5.838,2.413c-3.697,-0 -6.266,-2.763 -6.266,-9.263c-0,-6.616 2.724,-9.379 6.149,-9.379c2.102,-0 3.892,0.778 5.371,1.984l3.113,-3.775c-2.257,-1.868 -4.748,-2.957 -8.64,-2.957Z"/>
   </g>
@@ -86,7 +92,7 @@
     <nav id="sidebar">
 
       <div class="row">
-        <a class="icon-link svg-link" href="https://typelevel.org/cats/api/"><span title="API"><svg class="svg-icon" width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+        <a class="icon-link svg-link" href="https://www.javadoc.io/doc/org.typelevel/cats-docs_2.12/2.0.0/"><span title="API"><svg class="svg-icon" width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
   <g class="svg-shape">
     <path d="M75,47.5c13.246,0 24,10.754 24,24c0,13.246 -10.754,24 -24,24c-13.246,0 -24,-10.754 -24,-24c0,-13.246 10.754,-24 24,-24Zm-50,-0c13.246,-0 24,10.754 24,24c0,13.246 -10.754,24 -24,24c-13.246,-0 -24,-10.754 -24,-24c0,-13.246 10.754,-24 24,-24Zm2.705,16.735l7.239,0l0.622,-4.904l-21.833,0l-0,4.904l7.589,0l0,22.067l6.383,0l-0,-22.067Zm58.076,7.265c-0,-8.757 -3.698,-14.166 -10.781,-14.166c-7.083,-0 -10.781,5.604 -10.781,14.166c0,8.757 3.698,14.166 10.781,14.166c7.083,0 10.781,-5.604 10.781,-14.166Zm-6.539,0c0,6.538 -1.128,9.496 -4.242,9.496c-2.997,0 -4.242,-2.88 -4.242,-9.496c-0,-6.616 1.206,-9.496 4.242,-9.496c3.036,-0 4.242,2.88 4.242,9.496Zm-29.242,-67c13.246,0 24,10.754 24,24c0,13.246 -10.754,24 -24,24c-13.246,0 -24,-10.754 -24,-24c0,-13.246 10.754,-24 24,-24Zm0.512,9.834c-7.122,-0 -12.609,5.098 -12.609,14.127c-0,9.263 5.215,14.205 12.532,14.205c4.164,0 7.083,-1.634 9.068,-3.658l-2.88,-3.697c-1.518,1.206 -3.153,2.413 -5.838,2.413c-3.697,-0 -6.266,-2.763 -6.266,-9.263c-0,-6.616 2.724,-9.379 6.149,-9.379c2.102,-0 3.892,0.778 5.371,1.984l3.113,-3.775c-2.257,-1.868 -4.748,-2.957 -8.64,-2.957Z"/>
   </g>
@@ -119,6 +125,7 @@
         <li class="level2"><a href="typeclasses/applicativetraverse.html">Applicative and Traversable Functors</a></li>
         <li class="level2"><a href="typeclasses/arrow.html">Arrow</a></li>
         <li class="level2"><a href="typeclasses/arrowchoice.html">Arrow Choice</a></li>
+        <li class="level2"><a href="typeclasses/bifoldable.html">Bifoldable</a></li>
         <li class="level2"><a href="typeclasses/bifunctor.html">Bifunctor</a></li>
         <li class="level2"><a href="typeclasses/bimonad.html">Bimonad</a></li>
         <li class="level2"><a href="typeclasses/comonad.html">Comonad</a></li>
@@ -162,6 +169,7 @@
         <li class="level2"><a href="datatypes/validated.html">Validated</a></li>
         <li class="level2"><a href="datatypes/writer.html">Writer</a></li>
         <li class="level2"><a href="datatypes/writert.html">WriterT</a></li>
+        <li class="level2"><a href="datatypes/statet.html">StateT</a></li>
       </ul>
 
       <ul class="nav-list">
@@ -195,7 +203,6 @@
           <li class="level1"><a href="#where-is-listt">Where is ListT?</a></li>
           <li class="level1"><a href="#where-are-applicatives-for-monad-transformers">Where are <code>Applicative</code>s for monad transformers?</a></li>
           <li class="level1"><a href="#where-is-io-task">Where is IO/Task?</a></li>
-          <li class="level1"><a href="#what-does-typeclass-mean">What does <code>@typeclass</code> mean?</a></li>
           <li class="level1"><a href="#what-do-types-like-and-λ-mean">What do types like <code>?</code> and <code>λ</code> mean?</a></li>
           <li class="level1"><a href="#what-is-tailrecm">What is <code>tailRecM</code>?</a></li>
           <li class="level1"><a href="#what-does-this-symbol-mean">What does this symbol mean?</a></li>
@@ -225,7 +232,6 @@
           <li class="level2"><a href="#where-is-listt">Where is ListT?</a></li>
           <li class="level2"><a href="#where-are-applicatives-for-monad-transformers">Where are <code>Applicative</code>s for monad transformers?</a></li>
           <li class="level2"><a href="#where-is-io-task">Where is IO/Task?</a></li>
-          <li class="level2"><a href="#what-does-typeclass-mean">What does <code>@typeclass</code> mean?</a></li>
           <li class="level2"><a href="#what-do-types-like-and-λ-mean">What do types like <code>?</code> and <code>λ</code> mean?</a></li>
           <li class="level2"><a href="#what-is-tailrecm">What is <code>tailRecM</code>?</a></li>
           <li class="level2"><a href="#what-does-this-symbol-mean">What does this symbol mean?</a></li>
@@ -315,10 +321,6 @@
         <p>The answer is that Cats <em>does</em> include an <code>IO</code>, it just isn&#39;t included in the core library.  The decision was made to split <code>IO</code> away from cats-core and (indeed the whole Cats release cycle!) in order to make it easier to ensure modular versioning and compatibility across the ecosystem.  The <a href="https://github.com/typelevel/cats-effect">cats-effect</a> project defines a type, <code>cats.effect.IO</code>, which is intended to be a very minimal, very performant data type for managing synchronous and asynchronous side-effects, integrated into the Cats ecosystem.</p>
         <p>However, we acknowledge that this type may not meet everyone&#39;s needs. The cats-effect project characterizes the space of side-effect-capturing data types with a set of typeclasses (deriving from <code>cats.Monad</code>), and so all such data types are, broadly-speaking, mutually compatible and interchangeable in many generic contexts. For example, <a href="https://monix.io">Monix</a> provides support for IO, concurrency, and streaming and integrates with the cats-effect type classes.</p>
         <p>It may be worth keeping in mind that <code>IO</code> and <code>Task</code> are pretty blunt instruments (they are essentially the <code>Any</code> of side effect management), and you may want to narrow the scope of your effects throughout most of your application. The <a href="datatypes/freemonad.html">free monad</a> documentation describes a way to abstractly define controlled effects and interpret them into a type such as <code>IO</code> or <code>Task</code> as late as possible. As more of your code becomes pure through these controlled effects the less it matters which type you end up choosing to represent your side effects.</p>
-        
-        <h2 id="what-does-typeclass-mean" class="section">What does <code>@typeclass</code> mean?<a class="anchor-link right" href="#what-does-typeclass-mean"><i class="icofont-laika">&#xef71;</i></a></h2>
-        <p>Cats defines and implements numerous type classes. Unfortunately, encoding these type classes in Scala can incur a large amount of boilerplate. To address this, <a href="https://github.com/typelevel/simulacrum">Simulacrum</a> introduces <code>@typeclass</code>, a macro annotation which generates a lot of this boilerplate. This elevates type classes to a first class construct and increases the legibility and maintainability of the code. Use of simulacrum also ensures consistency in how the type classes are encoded across a project. Cats uses simulacrum wherever possible to encode type classes, and you can read more about it at the <a href="https://github.com/typelevel/simulacrum">project page</a>.</p>
-        <p>Note that the one area where simulacrum is intentionally not used is in the <code>cats-kernel</code> module. The <code>cats-kernel</code> module is intended to be a shared dependency for a number of projects, and as such, it is important that it is both lightweight and very stable from a binary compatibility perspective. At some point there may be a transition from simulacrum to <a href="https://github.com/typelevel/typeclassic">typeclassic</a>, and the binary compatibility of moving between simulacrum and typeclassic is unclear at this point. Avoiding the dependency on simulacrum in <code>cats-kernel</code>, provides insulation against any potential binary compatibility problems in such a transition.</p>
         
         <h2 id="what-do-types-like-and-λ-mean" class="section">What do types like <code>?</code> and <code>λ</code> mean?<a class="anchor-link right" href="#what-do-types-like-and-λ-mean"><i class="icofont-laika">&#xef71;</i></a></h2>
         <p>Cats defines a wealth of type classes and type class instances. For a number of the type class and instance combinations, there is a mismatch between the type parameter requirements of the type class and the type parameter requirements of the data type for which the instance is being defined. For example, the <a href="datatypes/either.html">Either</a> data type is a type constructor with two type parameters. We would like to be able to define a <a href="typeclasses/monad.html">Monad</a> for <code>Either</code>, but the <code>Monad</code> type class operates on type constructors having only one type parameter.</p>
