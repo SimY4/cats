@@ -114,6 +114,7 @@
         <li class="level1"><a href="../imports.html">Imports</a></li>
         <li class="level1"><a href="../faq.html">FAQ</a></li>
         <li class="level1"><a href="../CONTRIBUTING.html">Contributor guide</a></li>
+        <li class="level1"><a href="../ADOPTERS.html">Adopters</a></li>
         <li class="level1"><a href="../colophon.html">Colophon</a></li>
         <li class="level1"><a href="../nomenclature.html">Glossary</a></li>
         <li class="level1"><a href="../guidelines.html">Guidelines</a></li>
@@ -212,9 +213,7 @@
         <p>A common example of a semigroup is the type <code>Int</code> with the operation <code>+</code>.</p>
         <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">cats</span><span>.</span><span class="type-name">Semigroup</span><span>
 
-</span><span class="keyword">implicit</span><span> </span><span class="keyword">val</span><span> </span><span class="identifier">intAdditionSemigroup</span><span>: </span><span class="type-name">Semigroup</span><span>[</span><span class="type-name">Int</span><span>] = </span><span class="keyword">new</span><span> </span><span class="type-name">Semigroup</span><span>[</span><span class="type-name">Int</span><span>] {
-  </span><span class="keyword">def</span><span> </span><span class="declaration-name">combine</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">y</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> = </span><span class="identifier">x</span><span> + </span><span class="identifier">y</span><span>
-}
+</span><span class="keyword">implicit</span><span> </span><span class="keyword">val</span><span> </span><span class="identifier">intAdditionSemigroup</span><span>: </span><span class="type-name">Semigroup</span><span>[</span><span class="type-name">Int</span><span>] = </span><span class="identifier">_</span><span> + </span><span class="identifier">_</span><span>
 
 </span><span class="keyword">val</span><span> </span><span class="identifier">x</span><span> = </span><span class="number-literal">1</span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">y</span><span> = </span><span class="number-literal">2</span><span>
@@ -249,23 +248,23 @@
         <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">cats</span><span>.</span><span class="type-name">Semigroup</span><span>
 </span><span class="keyword">import</span><span> </span><span class="identifier">cats</span><span>.</span><span class="identifier">implicits</span><span>.</span><span class="identifier">_</span></code></pre>
         <pre class="keep-together pdf epub"><code class="nohighlight"><span class="type-name">Semigroup</span><span>[</span><span class="type-name">Int</span><span>]
-</span><span class="comment">// res8: Semigroup[Int] = cats.kernel.instances.IntGroup@c7f5157
+</span><span class="comment">// res8: Semigroup[Int] = cats.kernel.instances.IntGroup@41c4364d
 </span><span class="type-name">Semigroup</span><span>[</span><span class="type-name">String</span><span>]
-</span><span class="comment">// res9: Semigroup[String] = cats.kernel.instances.StringMonoid@6107e5ef</span></code></pre>
+</span><span class="comment">// res9: Semigroup[String] = cats.kernel.instances.StringMonoid@7c4bdcd8</span></code></pre>
         <p>Instances for type constructors regardless of their type parameter such as <code>List</code> (<code>++</code>)
         and <code>Set</code> (<code>union</code>)...</p>
         <pre class="keep-together pdf epub"><code class="nohighlight"><span class="type-name">Semigroup</span><span>[</span><span class="type-name">List</span><span>[</span><span class="type-name">Byte</span><span>]]
-</span><span class="comment">// res10: Semigroup[List[Byte]] = cats.kernel.instances.ListMonoid@201d656b
+</span><span class="comment">// res10: Semigroup[List[Byte]] = cats.kernel.instances.ListMonoid@37ce70f3
 </span><span class="type-name">Semigroup</span><span>[</span><span class="type-name">Set</span><span>[</span><span class="type-name">Int</span><span>]]
-</span><span class="comment">// res11: Semigroup[Set[Int]] = cats.kernel.instances.SetSemilattice@7be565d0
+</span><span class="comment">// res11: Semigroup[Set[Int]] = cats.kernel.instances.SetSemilattice@171de062
 </span><span>
 </span><span class="keyword">trait</span><span> </span><span class="type-name">Foo</span><span>
 </span><span class="type-name">Semigroup</span><span>[</span><span class="type-name">List</span><span>[</span><span class="type-name">Foo</span><span>]]
-</span><span class="comment">// res12: Semigroup[List[Foo]] = cats.kernel.instances.ListMonoid@d666612</span></code></pre>
+</span><span class="comment">// res12: Semigroup[List[Foo]] = cats.kernel.instances.ListMonoid@770bda92</span></code></pre>
         <p>And instances for type constructors that depend on (one of) their type parameters having instances such
         as tuples (pointwise <code>combine</code>).</p>
         <pre class="keep-together pdf epub"><code class="nohighlight"><span class="type-name">Semigroup</span><span>[(</span><span class="type-name">List</span><span>[</span><span class="type-name">Foo</span><span>], </span><span class="type-name">Int</span><span>)]
-</span><span class="comment">// res13: Semigroup[(List[Foo], Int)] = cats.kernel.Monoid$$anon$2@5310c2cc</span></code></pre>
+</span><span class="comment">// res13: Semigroup[(List[Foo], Int)] = cats.kernel.Monoid$$anon$2@550475b7</span></code></pre>
         
         <h1 id="example-usage-merging-maps" class="section">Example usage: Merging maps<a class="anchor-link right" href="#example-usage-merging-maps"><i class="icofont-laika">&#xef71;</i></a></h1>
         <p>Consider a function that merges two <code>Map</code>s that combines values if they share
