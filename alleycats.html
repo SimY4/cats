@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Laika 0.18.1 + Helium Theme" />
-    <title>Cats</title>
+    <title>Alleycats</title>
     
       <meta name="author" content="Cody Allen"/>
     
@@ -114,11 +114,11 @@
       </div>
 
       <ul class="nav-list">
-        <li class="level1 active"><a href="#">Cats</a></li>
+        <li class="level1"><a href="index.html">Cats</a></li>
         <li class="level1"><a href="typeclasses.html">Type Classes</a></li>
         <li class="level1"><a href="datatypes.html">Data Types</a></li>
         <li class="level1"><a href="algebra.html">Algebra</a></li>
-        <li class="level1"><a href="alleycats.html">Alleycats</a></li>
+        <li class="level1 active"><a href="#">Alleycats</a></li>
         <li class="level1"><a href="motivations.html">Motivations</a></li>
         <li class="level1"><a href="resources_for_learners.html">Resources for Learners</a></li>
         <li class="level1"><a href="jump_start_guide.html">Jump Start Guide</a></li>
@@ -200,20 +200,19 @@
     <div id="container">
 
       <nav id="page-nav">
-        <p class="header"><a href="#">Cats</a></p>
+        <p class="header"><a href="#">Alleycats</a></p>
 
         <ul class="nav-list">
           <li class="level1"><a href="#overview">Overview</a></li>
-          <li class="level1"><a href="#why-cats">Why &quot;cats&quot;?</a></li>
-          <li class="level1"><a href="#contributors">Contributors</a></li>
-          <li class="level2"><a href="#code-contributors">Code Contributors</a></li>
-          <li class="level2"><a href="#financial-contributors">Financial Contributors</a></li>
-          <li class="level2"><a href="#getting-started">Getting Started</a></li>
-          <li class="level2"><a href="#community">Community</a></li>
-          <li class="level2"><a href="#binary-compatibility-and-versioning">Binary compatibility and versioning</a></li>
-          <li class="level2"><a href="#adopters">Adopters</a></li>
-          <li class="level2"><a href="#maintainers">Maintainers</a></li>
-          <li class="level2"><a href="#copyright-and-license">Copyright and License</a></li>
+          <li class="level1"><a href="#type-classes">Type classes</a></li>
+          <li class="level2"><a href="#empty-a-zero-a-and-one-a">Empty[A], Zero[A], and One[A]</a></li>
+          <li class="level2"><a href="#pure-f-_-and-extract-f-_">Pure[F[_]] and Extract[F[_]]</a></li>
+          <li class="level2"><a href="#emptyk-f-_">EmptyK[F[_]]</a></li>
+          <li class="level1"><a href="#instances">Instances</a></li>
+          <li class="level2"><a href="#set-_-instances">Set[_] instances</a></li>
+          <li class="level2"><a href="#try-_-instances">Try[_] instances</a></li>
+          <li class="level2"><a href="#iterable-_-instances">Iterable[_] instances</a></li>
+          <li class="level1"><a href="#contributing">Contributing</a></li>
         </ul>
 
         <p class="footer"></p>
@@ -221,170 +220,102 @@
 
       <main class="content">
 
-        <h1 id="cats" class="title">Cats</h1>
-        <p><img src="https://typelevel.org/cats/img/cats2.png" alt="Cats graphic"></p>
-        <p><a href="https://index.scala-lang.org/typelevel/cats/cats-core"><img src="https://index.scala-lang.org/typelevel/cats/cats-core/latest-by-scala-version.svg?targetType=Js" alt="cats-core Scala version support"></a> <img src="https://github.com/typelevel/cats/workflows/Continuous%20Integration/badge.svg" alt="Continuous Integration">
-        <a href="https://opencollective.com/typelevel"><img src="https://opencollective.com/typelevel/all/badge.svg?label=financial+contributors" alt="Financial Contributors on Open Collective"></a>
-        <a href="https://discord.gg/XF3CXcMzqD"><img src="https://img.shields.io/discord/632277896739946517.svg?label=&logo=discord&logoColor=ffffff&color=404244&labelColor=6A7EC2" alt="Discord"></a></p>
+        <h1 id="alleycats" class="title">Alleycats</h1>
         
-        <h3 id="overview" class="section">Overview<a class="anchor-link right" href="#overview"><i class="icofont-laika">&#xef71;</i></a></h3>
-        <p>Cats is a library which provides abstractions for functional programming in the <a href="https://scala-lang.org">Scala programming language</a>.</p>
-        <p>Scala supports both object-oriented and functional programming, and this is reflected in the hybrid approach of the
-        standard library. Cats strives to provide functional programming abstractions that are core, <a href="#binary-compatibility-and-versioning">binary compatible</a>, <a href="https://typelevel.org/cats/motivations.html#modularity">modular</a>, <a href="https://typelevel.org/cats/motivations.html#approachability">approachable</a> and <a href="https://typelevel.org/cats/motivations.html#efficiency">efficient</a>. A broader goal of Cats is to provide a foundation for an <a href="https://typelevel.org/cats/typelevelEcosystem.html">ecosystem of pure, typeful libraries</a> to support functional programming in Scala applications.</p>
-        <p>For more detail about Cats&#39; motivations, go <a href="https://typelevel.org/cats/motivations.html">here</a>.</p>
+        <h2 id="overview" class="section">Overview<a class="anchor-link right" href="#overview"><i class="icofont-laika">&#xef71;</i></a></h2>
+        <p>Alleycats is a module of the <a href="https://github.com/typelevel/cats">Cats</a>
+        project that exists to support types which are not entirely savory or
+        <em>law-abiding</em> but which may prove useful or necessary in some
+        situations.</p>
+        <p>In some cases, a type class instance can almost (but not quite) obey
+        the required laws (e.g. a <code>Monad</code> instance for <code>scala.util.Try</code>). In
+        other cases, type classes which lack laws or constraints may still be
+        useful in some cases (e.g. <code>Empty[_]</code>, a type class which provides
+        some notion of &quot;emptiness&quot;).</p>
+        <p>Rather than argue about whether to permit these types in Cats proper, we
+        provide a (slightly disreputable) home for them here.</p>
         
-        <h3 id="why-cats" class="section">Why &quot;cats&quot;?<a class="anchor-link right" href="#why-cats"><i class="icofont-laika">&#xef71;</i></a></h3>
-        <p>The name is a playful shortening of the word <em>category</em>, from &quot;<a href="https://en.wikipedia.org/wiki/Category_theory">category theory</a>&quot;.</p>
-        <p>Regardless, you do not need to know anything about category theory to use Cats.</p>
+        <h2 id="type-classes" class="section">Type classes<a class="anchor-link right" href="#type-classes"><i class="icofont-laika">&#xef71;</i></a></h2>
+        <p>Alleycats introduces several new type classes. Here is an overview of
+        the instances introduced.</p>
         
-        <h2 id="contributors" class="section">Contributors<a class="anchor-link right" href="#contributors"><i class="icofont-laika">&#xef71;</i></a></h2>
+        <h3 id="empty-a-zero-a-and-one-a" class="section">Empty[A], Zero[A], and One[A]<a class="anchor-link right" href="#empty-a-zero-a-and-one-a"><i class="icofont-laika">&#xef71;</i></a></h3>
+        <p>A commonly-requested type class is one that encodes the idea of a set
+        having an identity element. Normally this would be done by defining a
+        <code>Monoid[A]</code> instance, but in some cases the idea of emptiness is
+        independent of a particular associative operation.</p>
+        <p>In this case, <code>Empty[A]</code> may be used in place of <code>Monoid[A]</code>. It
+        provides access to the <em>identity</em> element (via the <code>.empty</code> method),
+        and can also provide <code>.isEmpty</code> and <code>.nonEmpty</code> if an <code>Eq[A]</code> is
+        available.</p>
+        <p>The two other type classes, <code>Zero[A]</code> and <code>One[A]</code>, are similar,
+        except they correspond to <code>AdditiveMonoid[A]</code> and
+        <code>MultiplicativeMonoid[A]</code> (found in the <code>algebra.ring</code> package). Their
+        methods are called <code>zero</code> and <code>one</code>, respectively.</p>
+        <p>While none of these type classes have their own laws, they are
+        required not to violate the monoid laws when applicable. This means
+        that if <code>Empty[A]</code> and <code>Semigroup[A]</code> are both available, that
+        <code>Empty[A].empty</code> <strong>must</strong> function as an identity element for
+        <code>Semigroup[A].combine</code>. In fact, together these instances can be
+        viewed as a <code>Monoid[A]</code> (and there is an implicit method to that
+        effect).</p>
+        <p>The same rules apply to <code>Zero[A]</code> and <code>One[A]</code> and their respective
+        associative operations.</p>
         
-        <h3 id="code-contributors" class="section">Code Contributors<a class="anchor-link right" href="#code-contributors"><i class="icofont-laika">&#xef71;</i></a></h3>
-        <p>This project exists thanks to <a href="https://github.com/typelevel/cats/graphs/contributors">all the people who contribute</a>. We welcome contributions to Cats and would love for you to help build
-        Cats. See our <a href="CONTRIBUTING.html">contributor guide</a> for more
-        information about how you can get involved as a developer. If you are looking for something to start with, <a href="https://github.com/typelevel/cats/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22">here is a beginner friendly list</a>.</p>
+        <h3 id="pure-f-_-and-extract-f-_" class="section">Pure[F[_]] and Extract[F[_]]<a class="anchor-link right" href="#pure-f-_-and-extract-f-_"><i class="icofont-laika">&#xef71;</i></a></h3>
+        <p>The <code>Pure[F]</code> type class represents the <code>pure</code> method of
+        <code>Applicative[F]</code> separated from its <code>map</code> and <code>ap</code> methods. Like the
+        previous type classes, if <code>Pure[F]</code> and <code>Apply[F]</code> are both available
+        they are required to be consistent (and should provide a valid
+        <code>Applicative[F]</code> instance).</p>
+        <p>Similarly, <code>Extract[F]</code> represents the <code>extract</code> method of
+        <code>Comonad[F]</code> without <code>coflatMap</code> and <code>map</code> methods. When <code>Extract[F]</code>
+        and <code>CoflatMap[F]</code> are available, they should provide a valid
+        <code>Comonad[F]</code> instance.</p>
         
-        <h3 id="financial-contributors" class="section">Financial Contributors<a class="anchor-link right" href="#financial-contributors"><i class="icofont-laika">&#xef71;</i></a></h3>
-        <p><a href="https://opencollective.com/typelevel">Become a financial contributor</a> and help us sustain our community. Donations directly support office hours for maintainers, better documentation and strategic initiatives.</p>
-        <h4>Platinum Sponsors</h4>
-        <p><a href="https://opencollective.com/typelevel/contribute/platinum-sposor-12420/checkout">Platinum sponsorship</a> starts at $950 USD/month.
-        <div id="platinum-sponsors">
-          <noscript>Platinum Sponsors appear here at <a href="">https://typelevel.org/cats</a></noscript>
-        </div></p>
-        <h4>Gold Sponsors</h4>
-        <p><a href="https://opencollective.com/typelevel/contribute/gold-sponsor-12419/checkout">Gold Sponsorship</a> starts at $420 USD/month.
-        <div id="gold-sponsors">
-          <noscript>Gold Sponsors appear here at <a href="">https://typelevel.org/cats</a></noscript>
-        </div></p>
-        <h4>Silver Sponsors</h4>
-        <p><a href="https://opencollective.com/typelevel/contribute/silver-sponsor-11780/checkout">Silver Sponsorship</a> starts at $180 USD/month.
-        <div id="silver-sponsors">
-          <noscript>Silver Sponsors appear here at <a href="">https://typelevel.org/cats</a></noscript>
-        </div></p>
-        <h4>Backers</h4>
-        <p>Become a <a href="https://opencollective.com/typelevel/contribute/backer-11779/checkout">Backer</a> with a recurring donation of just $5 USD/month.
-        <div id="backers">
-          <noscript>Backers appear here at <a href="">https://typelevel.org/cats</a></noscript>
-        </div></p>
-        <h4>Other contributors</h4>
-        <p>We thankfully accept <a href="https://opencollective.com/typelevel/donate">one-time and recurring</a> contributions as well.
-        <div id="other-contributors">
-          <noscript>Other contributors appear here at <a href="">https://typelevel.org/cats</a></noscript>
-        </div></p>
-        <p><script src="/cats/js/sponsors.js"></script></p>
+        <h3 id="emptyk-f-_" class="section">EmptyK[F[_]]<a class="anchor-link right" href="#emptyk-f-_"><i class="icofont-laika">&#xef71;</i></a></h3>
+        <p>Finally, <code>EmptyK[F]</code> generalizes the <code>empty[A]</code> method from
+        <code>MonoidK[F]</code>. The pattern here is the same as before --
+        <code>SemigroupK[F]</code> and <code>EmptyK[F]</code> should provide a valid <code>MonoidK[F]</code>
+        instance.</p>
         
-        <h3 id="getting-started" class="section">Getting Started<a class="anchor-link right" href="#getting-started"><i class="icofont-laika">&#xef71;</i></a></h3>
-        <p>Cats is available for <a href="http://www.scala-js.org/">Scala.js</a> and <a href="https://www.scala-native.org/">Scala Native</a>, as well as the standard JVM runtime.</p>
-        <p>Cats relies on improved type inference via the fix for <a href="https://github.com/scala/bug/issues/2712">SI-2712</a>, which is not enabled by default. For <strong>Scala 2.12</strong> you should add the following to your <code>build.sbt</code>:</p>
-        <pre class="keep-together pdf epub"><code class="nohighlight"><span class="identifier">scalacOptions</span><span> += </span><span class="string-literal">&quot;-Ypartial-unification&quot;</span></code></pre>
-        <p>(Partial unification is on by default since Scala 2.13, the compiler no longer accepts <code>-Ypartial-unification</code>)</p>
-        <p>And then create the Cats dependency, by adding the following to your <code>build.sbt</code>:</p>
-        <pre class="keep-together pdf epub"><code class="nohighlight"><span class="identifier">libraryDependencies</span><span> += </span><span class="string-literal">&quot;org.typelevel&quot;</span><span> %% </span><span class="string-literal">&quot;cats-core&quot;</span><span> % </span><span class="string-literal">&quot;2.0.0&quot;</span></code></pre>
-        <p>This will pull in the cats-core module. If you require some other
-        functionality, you can pick-and-choose from amongst these modules
-        (used in place of <code>&quot;cats-core&quot;</code>):</p>
-        <ul>
-          <li><code>cats-kernel</code>: Small set of basic type classes (<em>required</em>).</li>
-          <li><code>cats-core</code>: Most core type classes and functionality (<em>required</em>).</li>
-          <li><code>cats-laws</code>: Laws for testing type class instances.</li>
-          <li><code>cats-free</code>: Free structures such as the free monad, and supporting type classes.</li>
-          <li><code>cats-testkit</code>: lib for writing tests for type class instances using laws.</li>
-          <li><code>algebra</code>: Type classes to represent algebraic structures.</li>
-          <li><code>alleycats-core</code>: Cats instances and classes which are not lawful.</li>
-        </ul>
-        <p>There are several other Cats modules that are in separate repos so that they can
-        maintain independent release cycles.</p>
-        <ul>
-          <li><a href="https://github.com/typelevel/cats-effect"><code>cats-effect</code></a>: standard <code>IO</code> type together with <code>Sync</code>, <code>Async</code> and <code>Effect</code> type classes</li>
-          <li><a href="https://github.com/typelevel/cats-mtl"><code>cats-mtl</code></a>: transformer typeclasses for Cats&#39; Monads, Applicatives and Functors.</li>
-          <li><a href="https://github.com/typelevel/mouse"><code>mouse</code></a>: a small companion to Cats that provides convenient syntax (aka extension methods)</li>
-          <li><a href="https://github.com/typelevel/kittens"><code>kittens</code></a>: automatic type class instance derivation for Cats and generic utility functions</li>
-          <li><a href="https://github.com/typelevel/cats-tagless"><code>cats-tagless</code></a>: Utilities for tagless final encoded algebras</li>
-          <li><a href="https://github.com/typelevel/cats-collections"><code>cats-collections</code></a>: Data structures which facilitate pure functional programming</li>
-          <li><a href="https://github.com/typelevel/cats-testkit-scalatest"><code>cats-testkit-scalatest</code></a>: Cats testkit integration with Scalatest</li>
-        </ul>
-        <p>Past release notes for Cats are available in <a href="https://github.com/typelevel/cats/blob/main/CHANGES.md">CHANGES.md</a>.</p>
+        <h2 id="instances" class="section">Instances<a class="anchor-link right" href="#instances"><i class="icofont-laika">&#xef71;</i></a></h2>
+        <p>Alleycats also provides some &quot;disreputable&quot; type class instances.</p>
         
-        <h3 id="community" class="section">Community<a class="anchor-link right" href="#community"><i class="icofont-laika">&#xef71;</i></a></h3>
-        <p>Discussion around Cats is currently happening on GitHub issues, PR pages,
-        and Discord:</p>
-        <p>The <a href="https://discord.gg/XF3CXcMzqD">Typelevel Discord</a> has #cats and #cats-dev
-        channels, as well as community channels such as #beginners.  Please join us!</p>
-        <p>People are expected to follow the
-        <a href="https://www.scala-lang.org/conduct/">Scala Code of Conduct</a> when
-        discussing Cats on GitHub, Discord, or other venues.</p>
-        <p>We hope that our community will be respectful, helpful, and kind. If
-        you find yourself embroiled in a situation that becomes heated, or
-        that fails to live up to our expectations, you should disengage and
-        contact one of the <a href="#maintainers">project maintainers</a> in private. We
-        hope to avoid letting minor aggressions and misunderstandings escalate
-        into larger problems.</p>
-        <p>If you are being harassed, please contact one of <a href="#maintainers">us</a>
-        immediately so that we can support you.</p>
+        <h3 id="set-_-instances" class="section">Set[_] instances<a class="anchor-link right" href="#set-_-instances"><i class="icofont-laika">&#xef71;</i></a></h3>
+        <p>Scala&#39;s <code>Set[_]</code> takes advantage of the universal availability of
+        <code>.hashCode</code> and <code>.equals</code>. This makes it difficult to use
+        <a href="https://failex.blogspot.jp/2013/06/fake-theorems-for-free.html">parametricity</a>
+        to reason about sets, and casts some doubt on their use with functors
+        and monads.</p>
+        <p>Alleycats provides <code>Monad[Set]</code> and <code>Traverse[Set]</code>. You can import
+        these instances via <code>import alleycats.std.set._</code>.</p>
         
-        <h3 id="binary-compatibility-and-versioning" class="section">Binary compatibility and versioning<a class="anchor-link right" href="#binary-compatibility-and-versioning"><i class="icofont-laika">&#xef71;</i></a></h3>
-        <p>After <code>1.0.0</code> release, we <a href="https://github.com/typelevel/cats/issues/1233">decided</a>
-        to use <em>MAJOR.MINOR.PATCH</em> <a href="http://semver.org/">Semantic Versioning 2.0.0</a>
-        going forward, which is different from the <em>EPOCH.MAJOR.MINOR</em> scheme common among
-        Java and Scala libraries (including the Scala lang).</p>
-        <p>Cats strives to provide a solid and stable foundation for an ecosystem of
-        FP libraries. Thus, we treat backward binary compatibility maintenance with a high priority.
-        In semantic versioning, backward breaking change is <strong>ONLY</strong> allowed between <em>MAJOR</em> versions.
-        We will maintain backward binary compatibility between <em>PATCH</em> AND <em>MINOR</em> versions.
-        For example, when we release Cats <code>1.1.0</code>, it will be backward binary compatible
-        with the previous <code>1.0.x</code> versions. I.E. the new JAR will be a drop-in replacement for
-        the old one. This is critical when your application has a diamond
-        dependency on Cats - depending on two or more libraries that all depend on Cats.
-        If one library upgrades to the new <code>1.1.0</code> Cats before the other one does, your
-        application still runs thanks to this backward binary compatibility.</p>
-        <p>Also worth noting is that according to semantic versioning,
-        <em>MINOR</em> version Y (x.Y.z | x &gt; 0) MUST be incremented
-        if new, backwards compatible functionality is introduced to the public API.
-        It MUST be incremented if any public API functionality is marked as deprecated.</p>
-        <p>Any binary breaking changes will require a <em>MAJOR</em> version bump, which we will be very
-        cautious about. We will also consider using <code>organization</code> and package name for major
-        versioning in the future. But that decision is yet to be made.</p>
+        <h3 id="try-_-instances" class="section">Try[_] instances<a class="anchor-link right" href="#try-_-instances"><i class="icofont-laika">&#xef71;</i></a></h3>
+        <p>Scala&#39;s <code>Try[_]</code> is intended to replace the need for <code>try { ... }
+catch { ... }</code> syntax in Scala programs, to ease error-handling, and
+        to transport exceptions as data. Due to the way <code>Try</code> transparently
+        catches exceptions in <code>.map</code> and <code>.flatMap</code>, some people are skeptical
+        that <code>Try</code> fulfills the necessary functor/monad laws.</p>
+        <p>Alleycats provides a <code>Monad[Try]</code>. You can import this instance via
+        <code>import alleycats.std.try._</code>.</p>
         
-        <h3 id="adopters" class="section">Adopters<a class="anchor-link right" href="#adopters"><i class="icofont-laika">&#xef71;</i></a></h3>
-        <p>A (non-exhaustive) list of companies that use Cats in production is featured on the <a href="ADOPTERS.html">Adopters page</a>. Don&#39;t see yours? <a href="https://github.com/typelevel/cats/edit/main/ADOPTERS.md">You can add it in a PR!</a> And if you can, consider <a href="https://opencollective.com/typelevel">supporting us</a>.</p>
+        <h3 id="iterable-_-instances" class="section">Iterable[_] instances<a class="anchor-link right" href="#iterable-_-instances"><i class="icofont-laika">&#xef71;</i></a></h3>
+        <p>Scala&#39;s <code>collection.Iterable[_]</code> offers no guarantees that it&#39;s immutable,
+        since it abstracts over the <code>mutable</code> and <code>immutable</code> variants. However it&#39;s
+        the type used to represent a <code>Map</code>s <code>values</code>, and its often desirable to treat the
+        values of a map as a <code>Foldable</code> collection. Alleycats provides a <code>Foldable[Iterable]</code>, eg:</p>
+        <pre><code>import cats.syntax.all._
+import alleycats.std.iterable._
+
+// Result &quot;AppleOrange&quot;
+Map(1 -&gt; &quot;Apple&quot;, 2 -&gt; &quot;Orange&quot;).values.combineAll</code></pre>
         
-        <h3 id="maintainers" class="section">Maintainers<a class="anchor-link right" href="#maintainers"><i class="icofont-laika">&#xef71;</i></a></h3>
-        <p>The current maintainers (people who can merge pull requests) are:</p>
-        <ul>
-          <li><a href="https://github.com/rossabaker">rossabaker</a> Ross Baker</li>
-          <li><a href="https://github.com/armanbilge">armanbilge</a> Arman Bilge</li>
-          <li><a href="https://github.com/johnynek">johnynek</a> P. Oscar Boykin</li>
-          <li><a href="https://github.com/adelbertc">adelbertc</a> Adelbert Chang</li>
-          <li><a href="https://github.com/danicheg">danicheg</a> Daniel Esik</li>
-          <li><a href="https://github.com/LukaJCB">LukaJCB</a> Luka Jacobowitz</li>
-          <li><a href="https://github.com/peterneyens">peterneyens</a> Peter Neyens</li>
-          <li><a href="https://github.com/tpolecat">tpolecat</a> Rob Norris</li>
-          <li><a href="https://github.com/non">non</a> Erik Osheim</li>
-          <li><a href="https://github.com/barambani">barambani</a> Filippo Mariotti</li>
-          <li><a href="https://github.com/mpilquist">mpilquist</a> Michael Pilquist</li>
-          <li><a href="https://github.com/milessabin">milessabin</a> Miles Sabin</li>
-          <li><a href="https://github.com/djspiewak">djspiewak</a> Daniel Spiewak</li>
-          <li><a href="https://github.com/fthomas">fthomas</a> Frank Thomas</li>
-          <li><a href="https://github.com/satorg">satorg</a> Sergey Torgashov</li>
-          <li><a href="https://github.com/julien-truffaut">julien-truffaut</a> Julien Truffaut</li>
-          <li><a href="https://github.com/kailuowang">kailuowang</a> Kailuo Wang</li>
-        </ul>
-        <p>Retired committers include:</p>
-        <ul>
-          <li><a href="https://github.com/ceedubs">ceedubs</a> Cody Allen</li>
-          <li><a href="https://github.com/travisbrown">travisbrown</a> Travis Brown</li>
-        </ul>
-        <p>We are currently following a practice of requiring at least two
-        sign-offs to merge code PRs (and for large or contentious issues we may
-        wait for more). For typos, documentation improvements or minor build fix we
-        relax this to a single sign-off. More detail in the <a href="https://github.com/typelevel/cats/blob/main/PROCESS.md">process document</a>.</p>
-        
-        <h3 id="copyright-and-license" class="section">Copyright and License<a class="anchor-link right" href="#copyright-and-license"><i class="icofont-laika">&#xef71;</i></a></h3>
-        <p>All code is available to you under the MIT license, available at
-        <a href="http://opensource.org/licenses/mit-license.php">http://opensource.org/licenses/mit-license.php</a> and also in the
-        <a href="https://github.com/typelevel/cats/blob/main/COPYING">COPYING</a> file. The design is informed by many other
-        projects, in particular <a href="https://github.com/scalaz/scalaz">Scalaz</a>.</p>
-        <p>Copyright the maintainers, 2015-2023.</p>
+        <h2 id="contributing" class="section">Contributing<a class="anchor-link right" href="#contributing"><i class="icofont-laika">&#xef71;</i></a></h2>
+        <p>This module&#39;s goal is to be very liberal about accepting type class
+        instances, but to only provide instances which are absent from
+        Cats proper. Law-abiding instances will end up in Cats, and everything else will
+        end up here.</p>
 
         <hr style="margin-top: 30px"/>
         <footer style="font-size: 90%; text-align: center">
