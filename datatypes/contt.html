@@ -143,7 +143,7 @@
     <li class="level1 nav-leaf"><a href="../jump_start_guide.html">Jump Start Guide</a></li>
     <li class="level1 nav-leaf"><a href="../imports.html">Imports</a></li>
     <li class="level1 nav-leaf"><a href="../faq.html">FAQ</a></li>
-    <li class="level1 nav-leaf"><a href="../CONTRIBUTING.html">Contributor guide</a></li>
+    <li class="level1 nav-leaf"><a href="../CONTRIBUTING.html">Contributor Guide</a></li>
     <li class="level1 nav-leaf"><a href="../ADOPTERS.html">Adopters</a></li>
     <li class="level1 nav-leaf"><a href="../colophon.html">Colophon</a></li>
     <li class="level1 nav-leaf"><a href="../nomenclature.html">Glossary</a></li>
@@ -286,7 +286,7 @@ Eval[UserUpdateResult]</code> as the continuation:</p>
     </span><span class="type-name">Succeeded</span><span>(</span><span class="identifier">user</span><span>.</span><span class="identifier">id</span><span>)
   }
 }
-</span><span class="comment">// eval: Eval[UserUpdateResult] = cats.Later@cdfc88</span></code></pre>
+</span><span class="comment">// eval: Eval[UserUpdateResult] = cats.Later@3c76ad7e</span></code></pre>
         <p>Finally we can run the resulting <code>Eval</code> to actually execute the computation:</p>
         <pre class="keep-together pdf epub"><code class="nohighlight"><span class="identifier">eval</span><span>.</span><span class="identifier">value</span><span>
 </span><span class="comment">// Persisting updated user to the DB: User(100,Bob,150)
@@ -308,7 +308,7 @@ Eval[UserUpdateResult]</code> as the continuation:</p>
 }
 </span><span class="comment">// anotherComputation: ContT[Eval, UserUpdateResult, Map[String, String]] = FromFn(
 //   runAndThen = Single(
-//     f = cats.data.ContT$$Lambda$11894/0x00007f7c28031f80@665bbe0f,
+//     f = cats.data.ContT$$Lambda$11968/0x00007fc11401cf88@5241dee9,
 //     index = 0
 //   )
 // )
@@ -319,7 +319,7 @@ Eval[UserUpdateResult]</code> as the continuation:</p>
     </span><span class="type-name">Succeeded</span><span>(</span><span class="identifier">userFields</span><span>(</span><span class="string-literal">&quot;id&quot;</span><span>).</span><span class="identifier">toInt</span><span>)
   }
 }
-</span><span class="comment">// anotherEval: Eval[UserUpdateResult] = cats.Eval$$anon$5@3ae066b8
+</span><span class="comment">// anotherEval: Eval[UserUpdateResult] = cats.Eval$$anon$5@48a23520
 </span><span>
 </span><span class="identifier">anotherEval</span><span>.</span><span class="identifier">value</span><span>
 </span><span class="comment">// Persisting these fields to the DB: Map(id -&gt; 100, name -&gt; Bob, age -&gt; 150)
@@ -336,7 +336,7 @@ Eval[UserUpdateResult]</code> as the continuation:</p>
   }
 </span><span class="comment">// updateUserModel: ContT[Eval, UserUpdateResult, User] = FromFn(
 //   runAndThen = Single(
-//     f = cats.data.ContT$$Lambda$11894/0x00007f7c28031f80@e9bcda8,
+//     f = cats.data.ContT$$Lambda$11968/0x00007fc11401cf88@6b50b2f,
 //     index = 0
 //   )
 // )
@@ -370,7 +370,7 @@ Eval[UserUpdateResult]</code> as the continuation:</p>
   </span><span class="identifier">updateUserModel</span><span> </span><span class="identifier">flatMap</span><span> </span><span class="identifier">persistToDb</span><span> </span><span class="identifier">flatMap</span><span> </span><span class="identifier">publishEvent</span><span>
 </span><span class="comment">// chainOfContinuations: ContT[Eval, UserUpdateResult, UserUpdateResult] = FromFn(
 //   runAndThen = Single(
-//     f = cats.data.ContT$$Lambda$11898/0x00007f7c28032908@1483ca94,
+//     f = cats.data.ContT$$Lambda$11972/0x00007fc11401d910@66b4ca7e,
 //     index = 0
 //   )
 // )
@@ -381,7 +381,7 @@ Eval[UserUpdateResult]</code> as the continuation:</p>
     </span><span class="identifier">finalResult</span><span>
   }
 }
-</span><span class="comment">// eval: Eval[UserUpdateResult] = cats.Eval$$anon$5@4dff5dd8
+</span><span class="comment">// eval: Eval[UserUpdateResult] = cats.Eval$$anon$5@68416dd4
 </span><span>
 </span><span class="identifier">eval</span><span>.</span><span class="identifier">value</span><span>
 </span><span class="comment">// Updated user model
